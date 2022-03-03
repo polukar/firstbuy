@@ -214,6 +214,9 @@
   justify-content: center;
   height: 280px;
   padding: 5px;
+  &:hover:after{
+    opacity: 1;
+  }
   &:after{
     content: "";
     position: absolute;
@@ -223,6 +226,8 @@
     height: 100%;
     z-index: 5;
     background-color: rgba(#1ecd11, .6);
+    opacity: 0;
+    transition: .4s;
   }
 }
 
