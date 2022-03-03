@@ -2,9 +2,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
 
-  // header
+
 
   document.addEventListener('scroll', () => {
+    // header
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const header = document.querySelector('.header');
     if (header) {
@@ -12,8 +13,35 @@ document.addEventListener("DOMContentLoaded", () => {
         header.classList.add('header--fix');
       } else {
         header.classList.remove('header--fix');
-
       }
+    }
+
+    // animation
+
+    const animateSection = document.querySelectorAll('.animate-section');
+
+    if (animateSection) {
+      animateSection.forEach(elem => {
+        const elemOffset = elem.getBoundingClientRect();
+        if (elemOffset.top < (pageYOffset - 300)) {
+          elem.classList.add('is-active');
+        }
+      })
+    }
+
+    // section add hash tag #
+
+    const section = document.querySelectorAll('section');
+
+    if (section) {
+      section.forEach(elem => {
+        const elemOffset = elem.getBoundingClientRect();
+        const elemSize = elem.offsetHeight;
+        if (elemOffset.top < (pageYOffset / 1.2) && (elemOffset.top + elemSize) > (pageYOffset / 1.2)) {
+          const sectionHash = elem.getAttribute('data-hash');
+          window.location.hash = sectionHash;
+        }
+      })
     }
   })
 
@@ -271,6 +299,19 @@ document.addEventListener("DOMContentLoaded", () => {
         popup.forEach(popupElem => {
           fadeOut(popupElem);
         })
+      })
+    })
+  }
+
+
+  // hashclick
+
+  const elemHash = document.querySelectorAll('[data-hashclick]');
+  if (elemHash) {
+    elemHash.forEach(elem => {
+      elem.addEventListener('click', () => {
+        const dataHash = elem.getAttribute('data-hashclick');
+        window.location.hash = dataHash;
       })
     })
   }
