@@ -157,11 +157,16 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
   // маска на инпут телефона
-  var phoneMask = IMask(
-    document.querySelector('.phone-mask'), {
-    mask: '+{7}(000)000-00-00'
-  }
-  );
+  const phoneMask = document.querySelectorAll('.phone-mask');
+  phoneMask.forEach(elem => {
+    var phoneMask = IMask(
+      elem, {
+      mask: '+{7}(000)000-00-00'
+    }
+    );
+  })
+
+
 
   // проверка на контент в инпуте, если есть то оставляем активным
   const placeholder = (elem, placeholder) => {
@@ -190,6 +195,83 @@ document.addEventListener("DOMContentLoaded", () => {
       const place = elem.querySelector('.form__placeholder');
       const input = elem.querySelector('input[type="text"]');
       placeholder(input, place);
+    })
+  }
+
+
+  // form
+
+  const form = document.querySelectorAll('form');
+
+  if (form) {
+    form.forEach(elem => {
+      const reqInputs = [...elem.querySelectorAll('.requared')];
+      if (!reqInputs) return;
+
+      const submit = elem.querySelector('.form__sumbit');
+      reqInputs.forEach((inputEl) => {
+        inputEl.addEventListener('keyup', () => {
+          const result = reqInputs.filter(reqInput => reqInput.value.length < 4);
+          if (result.length > 0) {
+            submit.setAttribute('disabled', true)
+          } else {
+            submit.removeAttribute('disabled')
+          }
+        })
+      })
+    })
+  }
+
+  // popups
+
+  function fadeIn(el, display) {
+    el.style.opacity = 0;
+    el.style.display = display || 'block';
+    (function fade() {
+      var val = parseFloat(el.style.opacity);
+      if (!((val += .05) > 1)) {
+        el.style.opacity = val;
+        requestAnimationFrame(fade);
+      }
+    })();
+  }
+
+
+  function fadeOut(el) {
+    el.style.opacity = 1;
+    (function fade() {
+      if ((el.style.opacity -= .05) < 0) {
+        el.style.display = 'none';
+      } else {
+        requestAnimationFrame(fade);
+      }
+    })();
+  };
+
+
+  const popupOpen = document.querySelectorAll('[data-event="open-popup"]');
+
+  if (popupOpen) {
+    popupOpen.forEach(elem => {
+      elem.addEventListener('click', () => {
+        const popupName = elem.getAttribute('data-popup');
+        const popup = document.querySelector(`.popup[data-popup="${popupName}"]`);
+        fadeIn(popup);
+      })
+    });
+  }
+
+
+  const closePopup = document.querySelectorAll('[data-event="close-popup"');
+
+  if (closePopup) {
+    closePopup.forEach(elem => {
+      elem.addEventListener('click', () => {
+        const popup = document.querySelectorAll('.popup');
+        popup.forEach(popupElem => {
+          fadeOut(popupElem);
+        })
+      })
     })
   }
 });
