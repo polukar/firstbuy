@@ -1,0 +1,145 @@
+.header{
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 33px;
+  padding-bottom: 33px;
+  color: #fff;
+  z-index: 40;
+  transition: .4s;
+  p, span{
+    color:#fff;
+  }
+}
+
+.header--fix{
+  background-color: rgba(#000, .5);
+}
+
+.logo__description{
+  margin-left: 45px;
+  position: relative;
+  color: #fff;
+  font-size: 14px;
+  max-width: 185px;
+  &:after{
+    content: "";
+    position: absolute;
+    transform: rotateZ(-10deg) translateY(-10px);
+    height: 61px;
+    background-color: #fff;
+    width: 1px;
+    left: -20px;
+    top: 0;
+    opacity: .2;
+  }
+}
+
+
+.header__text{
+  p, span{
+    line-height: 1;
+    font-size: 14px;
+  }
+}
+
+.header__ico{
+  margin-right: 15px;
+}
+
+.header__text--time{
+  
+  margin-right: 40px;
+  p{
+    font-weight: 300;
+  }
+  span{
+    font-weight: 600;
+  }
+}
+
+.header__contact--phone{
+  margin-right: 25px;
+  p{
+    font-size: 12px;
+  }
+  span{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: auto;
+    padding-top: 8px;
+    display: block;
+  }
+}
+
+
+.header__socials{
+  display: flex;
+  margin-right: 48px;
+  .social{
+    margin-right: 11px;
+  }
+  .social:last-child{
+    margin-right: 0px;
+  }
+}
+
+.header__right{
+  display: flex;
+  align-items: center;
+}
+
+
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.btn--border{
+  border: 1px solid transparent;
+  border-image: linear-gradient(-45deg, #66ce09, #21873b);
+  border-image-slice: 1;
+  height: 43px;
+  font-size: 14px;
+  padding-left: 29px;
+  padding-right: 29px;
+  color: #fff;
+  transition: .4s;
+  &:hover{
+    background-color: #36b10d;
+    border-color: #36b10d;
+  }
+}
+
+.btn--green{
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to right, #12b127, #36d60d);
+  font-weight: 500;
+  color: #fff;
+  transition: .4s;
+  position: relative;
+  span{
+    position: relative;
+    z-index: 10;
+  }
+  &:hover:after{
+    opacity: 1;
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: #36b10d;
+    transition: .4s;
+    opacity: 0;
+  }
+}
