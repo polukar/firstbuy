@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       section.forEach(elem => {
         const elemOffset = elem.getBoundingClientRect();
         const elemSize = elem.offsetHeight;
-        if (elemOffset.top < (pageYOffset / 1.2) && (elemOffset.top + elemSize) > (pageYOffset / 1.2)) {
+        if (elemOffset.top < pageYOffset && (elemOffset.top + elemSize) > pageYOffset / 1.2) {
           const sectionHash = elem.getAttribute('data-hash');
           window.location.hash = sectionHash;
         }

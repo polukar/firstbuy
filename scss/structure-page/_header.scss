@@ -79,10 +79,33 @@
   display: flex;
   margin-right: 48px;
   .social{
-    margin-right: 11px;
+    margin-right: 4px;
   }
   .social:last-child{
     margin-right: 0px;
+  }
+}
+
+.social{
+  transition: .3s;
+  opacity: .8;
+  &:hover{
+    opacity: 1;
+  }
+  &.ws{
+    width: 30px;
+    height: 27px;
+    background: url(../../images/content/socials.png) no-repeat 0 center / auto;
+  }
+  &.vb{
+    width: 30px;
+    height: 27px;
+    background: url(../../images/content/socials.png) no-repeat -34px center / auto;
+  }
+  &.tm{
+    width: 30px;
+    height: 27px;
+    background: url(../../images/content/socials.png) no-repeat -67px center / auto;
   }
 }
 
