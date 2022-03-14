@@ -245,6 +245,7 @@
     justify-content: center;
     height: 280px;
     padding: 5px;
+    position: relative;
     &:hover:after {
         opacity: 1;
     }
